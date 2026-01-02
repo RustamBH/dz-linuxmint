@@ -3,25 +3,26 @@ user:
   name: Рустам
   age: 30
   role: Director
-  skills: ["Management", "Program", "English"]
-  address: "Москва"
-  pets: ["Dog", "cat", "snail"]
+  skills: [Management, Program, English]
 
-skill:
-  name: Manager
-  level: 5
-  multiline: |
-    Это текст описания
-    качеств руководителя
+  skill:
+    name: Manager
+    level: 5
+    multiline: |
+      Это текст описания
+      качеств руководителя
 
-address:
-  country: Россия
-  city: Москва
-  street: Коломенская
-  home: 78
-  flat: 501
+  address:
+    country: Россия
+    city: Москва
+    street: Коломенская
+    home: 78
+    flat: 501
 
-pets:
-  - name: Вася
-    breed: сиамский
-    is_mur: yes  # или is_meow, is_murzik
+  pets:
+    - name: Вася
+      breed: сиамский
+      is_meow: yes  # или is_meow, is_murzik
+    - name : собака
+      breed: терьер
+      is_meow: no
