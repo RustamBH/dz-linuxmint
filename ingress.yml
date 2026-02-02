@@ -16,8 +16,14 @@ spec:
           service:
             name: conv-app-clusterip
             port: 
-              number: 80
+              number: 80      
+  - host: conf.test
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
           service:
-            name: converter-clusterip
+            name: conv-api-clusterip
             port: 
-              number: 80              
+              number: 80                    
