@@ -17,3 +17,7 @@ spec:
             name: conv-app-clusterip
             port: 
               number: 80
+          service:
+            name: converter-clusterip
+            port: 
+              number: 80              
