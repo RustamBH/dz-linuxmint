@@ -17,12 +17,18 @@ spec:
       - name: conv-app
         image: antonlarichev/conv-app
         ports:
-        - containerPort: 80    
+        - containerPort: 80   
+        env:
+          - name: VITE_DOMAIN
+            valueFrom:
+              configMapKeyRef:
+                name: demo-config
+                key: VITE_DOMAIN      
         resources:
           limits:
             memory: "128Mi"
             cpu: "100m"
       volumes:
-        - name: VITE_DOMAIN
+        - name: test
           configMap:
             name: demo-config
