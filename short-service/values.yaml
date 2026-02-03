@@ -8,3 +8,94 @@ app:
   limits:
     memory: "128Mi"
     cpu: "100m"
+
+api:
+  name: short-api
+  image: antonlarichev/short-app 
+  version: v1.0
+  components: backend
+  port: 3000
+  replicas: 1
+  limits:
+    memory: "500Mi"
+    cpu: "200m"
+  envs:
+    - DATABASE_URL
+
+postgres:
+  name: postgres
+  image: postgres
+  version: 16.11
+  components: postgres
+  port: 5432
+  limits:
+    memory: "500Mi"
+    cpu: "300m"
+  envs:
+    - POSTGRES_DB    
+    - POSTGRES_USER    
+    - POSTGRES_PASSWORD    
+
+database:
+  user: demo
+  password: demo
+  db: demo
+
+rmq:
+  name: rabbitmq
+  image: rabbitmq
+  version: 4.2.2-management
+  components: rabbitmq
+  port: 5672
+  limits:
+    memory: "500Mi"
+    cpu: "300m"
+  envs:
+    - SEED_USERNAME    
+    - SEED_USER_PASSWORD
+
+rabbitmq:
+  user: guest
+  password: guest
+
+converter:
+  name: converter
+  image: antonlarichev/converter
+  version: 1.0
+  components: frontend
+  port: 80
+  replicas: 1
+  limits:
+    memory: "128Mi"
+    cpu: "100m"
+  envs:
+    - AMQP_EXCHANGE
+    - AMQP_USER
+    - AMQP_PASSWORD
+    - AMQP_HOSTNAME
+    - AMQP_QUEUE
+
+cnv:
+  exchange: test
+  user: guest
+  password: guest
+  hostname: rabbitmq-clusterip
+  queue: converter
+
+conv_api:
+  name: conv-api
+  image: antonlarichev/conv-api
+  version: 1.2
+  components: frontend
+  port: 80
+  replicas: 1
+  limits:
+    memory: "128Mi"
+    cpu: "100m"
+  envs:
+    - SEED_USERNAME    
+    - SEED_USER_PASSWORD  
+    - AMQP_EXCHANGE
+    - AMQP_USER
+    - AMQP_PASSWORD
+    - AMQP_HOSTNAME    

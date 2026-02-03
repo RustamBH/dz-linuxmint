@@ -8,8 +8,7 @@ spec:
     matchLabels:
       components: {{ .Values.app.components }}
   template:
-    metadata:
-      name: short-app
+    metadata:      
       labels:
         components: {{ .Values.app.components }}
     spec:
